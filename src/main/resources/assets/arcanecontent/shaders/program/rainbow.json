@@ -1,6 +1,6 @@
 {
   "vertex": "minecraft:sobel",
-  "fragment": "arcanetweaks:rainbow",
+  "fragment": "arcanecontent:rainbow",
 
   "attributes": [ "Position" ],
 

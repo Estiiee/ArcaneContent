@@ -1,4 +1,4 @@
-package com.estie.arcanecontent.datagen.loot;
+package com.estie.arcanecontent.datagen.providers.loot;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;

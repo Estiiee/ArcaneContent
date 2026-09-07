@@ -1,0 +1,62 @@
+{
+  "block_of_silly_mine": {
+    "sounds": [
+      "arcanecontent:block_of_silly_mine"
+    ]
+  },
+  "dragon_nuke_charge_fire": {
+    "sounds": [
+      "arcanecontent:dragon_nuke_charge_fire"
+    ]
+  },
+  "dragon_nuke_charge_ice": {
+    "sounds": [
+      "arcanecontent:dragon_nuke_charge_ice"
+    ]
+  },
+  "dragon_nuke_charge_lightning": {
+    "sounds": [
+      "arcanecontent:dragon_nuke_charge_lightning"
+    ]
+  },
+  "dragon_nuke_explode": {
+    "sounds": [
+      "arcanecontent:dragon_nuke_explode"
+    ]
+  },
+  "funnehsound": {
+    "sounds": [
+      "arcanecontent:funnehsound"
+    ]
+  },
+  "melee_block_break": {
+    "sounds": [
+      "arcanecontent:melee_block_break"
+    ]
+  },
+  "melee_parry": {
+    "sounds": [
+      "arcanecontent:melee_parry"
+    ]
+  },
+  "mrkrabs_sadge": {
+    "sounds": [
+      "arcanecontent:mrkrabs_sadge"
+    ]
+  },
+  "wither_boss_phase_1": {
+    "sounds": [
+      "arcanecontent:wither_boss_phase_1"
+    ]
+  },
+  "wither_boss_phase_2": {
+    "sounds": [
+      "arcanecontent:wither_boss_phase_2"
+    ]
+  },
+  "wither_boss_phase_3": {
+    "sounds": [
+      "arcanecontent:wither_boss_phase_3"
+    ]
+  }
+}

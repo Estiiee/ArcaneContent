@@ -1,4 +1,4 @@
-package com.estie.arcanecontent.datagen.tags;
+package com.estie.arcanecontent.datagen.providers.tags;
 
 import com.estie.arcanecontent.ArcaneContent;
 import com.estie.arcanecontent.init.ArcaneDamageSources;

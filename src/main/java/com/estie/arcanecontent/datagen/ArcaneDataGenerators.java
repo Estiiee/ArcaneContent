@@ -1,10 +1,14 @@
 package com.estie.arcanecontent.datagen;
 
 import com.estie.arcanecontent.ArcaneContent;
-import com.estie.arcanecontent.datagen.loot.ArcaneLootTableProvider;
-import com.estie.arcanecontent.datagen.tags.ArcaneBlockTagsProvider;
-import com.estie.arcanecontent.datagen.tags.ArcaneDamageTypeTagsProvider;
-import com.estie.arcanecontent.datagen.tags.ArcaneEntityTypeTagsProvider;
+import com.estie.arcanecontent.datagen.providers.ArcaneBlockStateProvider;
+import com.estie.arcanecontent.datagen.providers.ArcaneItemModelProvider;
+import com.estie.arcanecontent.datagen.providers.ArcaneRegistryProvider;
+import com.estie.arcanecontent.datagen.providers.ArcaneSoundDefinitionsProvider;
+import com.estie.arcanecontent.datagen.providers.loot.ArcaneLootTableProvider;
+import com.estie.arcanecontent.datagen.providers.tags.ArcaneBlockTagsProvider;
+import com.estie.arcanecontent.datagen.providers.tags.ArcaneDamageTypeTagsProvider;
+import com.estie.arcanecontent.datagen.providers.tags.ArcaneEntityTypeTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -39,9 +43,9 @@ public class ArcaneDataGenerators {
         
         gen.addProvider(event.includeServer(), new ArcaneDamageTypeTagsProvider(output, updatedLookupProvider, existingFileHelper));
         
-        
-        //gen.addProvider(client, new ArcaneBlockStateProvider(output, ArcaneContent.MODID, existingFileHelper));
-        //gen.addProvider(client, new ArcaneItemModelProvider(output, ArcaneContent.MODID, existingFileHelper));
+        gen.addProvider(client, new ArcaneBlockStateProvider(output, existingFileHelper));
+        gen.addProvider(client, new ArcaneItemModelProvider(output, existingFileHelper));
+        gen.addProvider(client, new ArcaneSoundDefinitionsProvider(output, existingFileHelper));
         //gen.addProvider(client, new ArcaneLanguageProvider(output, ArcaneContent.MODID, "en_us"));
     }
 }

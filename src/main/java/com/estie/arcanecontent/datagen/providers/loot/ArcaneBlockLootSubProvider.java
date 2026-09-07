@@ -1,4 +1,4 @@
-package com.estie.arcanecontent.datagen.loot;
+package com.estie.arcanecontent.datagen.providers.loot;
 
 import com.estie.arcanecontent.init.ArcaneBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
