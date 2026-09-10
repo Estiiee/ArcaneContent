@@ -1,7 +1,7 @@
 package com.estie.arcanecontent.world.district;
 
 import com.estie.arcanecontent.ArcaneContent;
-import com.livajq.arcanetweaks.Config;
+import com.estie.arcanecontent.Config;
 import com.livajq.arcanetweaks.UndergroundBiomeConfigLoader;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

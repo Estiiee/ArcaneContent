@@ -1,9 +1,8 @@
 package com.estie.arcanecontent.common.capability.parry;
 
 import com.estie.CompatUtils;
-import com.estie.arcanecontent.ArcaneContent;
 import com.estie.arcanecontent.init.ArcaneSounds;
-import com.livajq.arcanetweaks.Config;
+import com.estie.arcanecontent.Config;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -25,12 +24,12 @@ public class ParryImp implements ParryData {
     Player player;
     
     private long parryWindUpTicks = 0;
-    private long parryWindUpTicksMax = ArcaneContent.tweaksLoaded() ? Config.parryWindUp : 1;
+    private long parryWindUpTicksMax = Config.parryWindUp;
     private long parryWindowTicks = 0;
-    private long parryWindowTicksMax = ArcaneContent.tweaksLoaded() ? Config.parryWindow : 1;
+    private long parryWindowTicksMax = Config.parryWindow;
     private long parryCooldownTicks = 0;
-    private long parryCooldownTicksFail = ArcaneContent.tweaksLoaded() ? Config.parryCooldownFail : 1;
-    private long ParryCooldownTicksSuccess = ArcaneContent.tweaksLoaded() ? Config.parryCooldownSuccess : 1;
+    private long parryCooldownTicksFail = Config.parryCooldownFail;
+    private long ParryCooldownTicksSuccess = Config.parryCooldownSuccess;
     
     private boolean parryWindowActive = false;
     

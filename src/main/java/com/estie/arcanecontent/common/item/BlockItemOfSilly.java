@@ -2,7 +2,7 @@ package com.estie.arcanecontent.common.item;
 
 import com.estie.CompatUtils;
 import com.estie.arcanecontent.ArcaneContent;
-import com.livajq.arcanetweaks.Config;
+import com.estie.arcanecontent.Config;
 import com.livajq.arcanetweaks.handlers.PacketHandler;
 import com.livajq.arcanetweaks.packet.StartSillyRainbowEffectPacket;
 import net.minecraft.ChatFormatting;

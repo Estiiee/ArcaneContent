@@ -1,7 +1,7 @@
 package com.estie.arcanecontent.common.block;
 
 import com.estie.arcanecontent.ArcaneContent;
-import com.livajq.arcanetweaks.Config;
+import com.estie.arcanecontent.Config;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -89,7 +89,7 @@ public class BlockOfSilly extends Block {
                 if (player == null || level == null) return;
                 if (level.random.nextInt(200) != 0) return;
                 
-                int radius = ArcaneContent.tweaksLoaded() ? Config.blockSillyVisualsRadius : 1;
+                int radius = Config.blockSillyVisualsRadius;
                 BlockPos playerPos = player.blockPosition();
                 
                 for (BlockPos bp : BlockPos.betweenClosed(playerPos.offset(-radius, -radius, -radius), playerPos.offset(radius, radius, radius))) {
