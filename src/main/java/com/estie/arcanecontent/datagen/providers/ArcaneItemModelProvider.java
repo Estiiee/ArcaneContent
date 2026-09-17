@@ -17,6 +17,7 @@ public class ArcaneItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         withExistingParent("block_of_silly", modLoc("block/block_of_silly"));
+        withExistingParent("frostbitten_leaves", modLoc("block/frostbitten_leaves"));
         
         for (ArcaneItems.BloodedArmorSet set : ArcaneItems.BLOODED_ARMOR_SETS.values()) {
             registerBloodedPiece(set.helmet().get());

@@ -6,6 +6,7 @@ import com.estie.arcanecontent.common.item.blooded.BloodedDragonType;
 import com.estie.arcanecontent.common.item.blooded.ItemBloodedArmor;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -28,6 +29,7 @@ public class ArcaneItems {
     }
     
     public static final RegistryObject<BlockItemOfSilly> BLOCK_OF_SILLY = ITEMS.register("block_of_silly", () -> new BlockItemOfSilly(ArcaneBlocks.BLOCK_OF_SILLY.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> FROSTBITTEN_LEAVES = ITEMS.register("frostbitten_leaves", () -> new BlockItem(ArcaneBlocks.FROSTBITTEN_LEAVES.get(), new Item.Properties()));
     
     static {
         for (BloodedDragonType type : BloodedDragonType.values()) {

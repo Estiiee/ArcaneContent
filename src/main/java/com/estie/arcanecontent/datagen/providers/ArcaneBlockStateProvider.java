@@ -14,5 +14,6 @@ public class ArcaneBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleBlock(ArcaneBlocks.BLOCK_OF_SILLY.get(), models().cubeAll("block_of_silly", modLoc("block/block_of_silly")));
+        simpleBlock(ArcaneBlocks.FROSTBITTEN_LEAVES.get(), models().cubeAll("frostbitten_leaves", modLoc("block/frostbitten_leaves")));
     }
 }

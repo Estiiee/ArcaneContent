@@ -1,4 +1,4 @@
-// 1.20.1	2026-09-10T11:42:29.4920394	Item Models: arcanecontent
+// 1.20.1	2026-09-17T19:21:52.8885846	Item Models: arcanecontent
 e4608ec4403d28c87a97bfa7979901a3cec1a49a assets/arcanecontent/models/item/block_of_silly.json
 05919cf30948908059db7111a9ceb18db2b53870 assets/arcanecontent/models/item/blooded_fire_bronze_boots.json
 9a0b903d13272c2b7a4c341469021fc20acd4701 assets/arcanecontent/models/item/blooded_fire_bronze_chestplate.json
@@ -48,3 +48,4 @@ badfa670b0893c1878b0aa8866f45e4ba8ee8a2d assets/arcanecontent/models/item/bloode
 b4d22b6952d81fae0a7b031c3c08314b9591029c assets/arcanecontent/models/item/blooded_lightning_electric_chestplate.json
 22309025b161eb9436b3468a5c14a95d9a191c14 assets/arcanecontent/models/item/blooded_lightning_electric_helmet.json
 6b642a59be2c1279845948fc66b614ddd8b50ac1 assets/arcanecontent/models/item/blooded_lightning_electric_leggings.json
+eab67b1e67270bdc0409d08ec8ab0fd4909b686f assets/arcanecontent/models/item/frostbitten_leaves.json

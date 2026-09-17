@@ -76,17 +76,16 @@ public class ItemBloodedArmor extends ArmorItem {//implements IProtectAgainstDra
         int wornCount = countWornPiecesClient(level);
         boolean fullSet = wornCount >= 4;
         
-        tooltip.add(Component.translatable("item.iceandfire.blooded_set.title")
-                .withStyle(ChatFormatting.GRAY));
+        //tooltip.add(Component.translatable("item.iceandfire.blooded_set.title").withStyle(ChatFormatting.GRAY));
         
-        ChatFormatting descColor = fullSet ? elementColor : ChatFormatting.GRAY;
-        String effectKey = switch (dragonType.getElement()) {
-            case FIRE -> "item.iceandfire.blooded_set.fire";
-            case ICE -> "item.iceandfire.blooded_set.ice";
-            case LIGHTNING -> "item.iceandfire.blooded_set.lightning";
-        };
-        tooltip.add(
-                Component.literal(wornCount + "/4: ").append(Component.translatable(effectKey)).withStyle(descColor));
+        //ChatFormatting descColor = fullSet ? elementColor : ChatFormatting.GRAY;
+        //String effectKey = switch (dragonType.getElement()) {
+        //    case FIRE -> "item.iceandfire.blooded_set.fire";
+        //    case ICE -> "item.iceandfire.blooded_set.ice";
+        //    case LIGHTNING -> "item.iceandfire.blooded_set.lightning";
+        //};
+        //tooltip.add(
+        //        Component.literal(wornCount + "/4: ").append(Component.translatable(effectKey)).withStyle(descColor));
     }
     
     private int countWornPiecesClient(@Nullable Level level) {

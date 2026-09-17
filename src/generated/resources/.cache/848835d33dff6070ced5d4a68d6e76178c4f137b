@@ -1,2 +1,4 @@
-// 1.20.1	2026-09-07T17:09:25.3172692	Tags for minecraft:block mod id arcanecontent
+// 1.20.1	2026-09-17T19:16:55.3356436	Tags for minecraft:block mod id arcanecontent
 92861bbfc33718f65a6c66f4468675fa09ac162f data/arcanecontent/tags/blocks/hydrothermal_vent_surface.json
+71f6b3a3684eccb71fbe7f44023ea4042492e02c data/minecraft/tags/blocks/leaves.json
+71f6b3a3684eccb71fbe7f44023ea4042492e02c data/minecraft/tags/blocks/mineable/hoe.json

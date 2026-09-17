@@ -1,9 +1,11 @@
 package com.estie.arcanecontent.datagen.providers.tags;
 
 import com.estie.arcanecontent.ArcaneContent;
+import com.estie.arcanecontent.init.ArcaneBlocks;
 import com.estie.arcanecontent.init.ArcaneTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -18,5 +20,7 @@ public class ArcaneBlockTagsProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(ArcaneTags.HYDROTHERMAL_VENT_SURFACE).add(Blocks.GRASS_BLOCK);
+        tag(BlockTags.LEAVES).add(ArcaneBlocks.FROSTBITTEN_LEAVES.get());
+        tag(BlockTags.MINEABLE_WITH_HOE).add(ArcaneBlocks.FROSTBITTEN_LEAVES.get());
     }
 }

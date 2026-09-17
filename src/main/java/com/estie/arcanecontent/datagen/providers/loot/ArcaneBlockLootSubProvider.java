@@ -17,6 +17,7 @@ public class ArcaneBlockLootSubProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ArcaneBlocks.BLOCK_OF_SILLY.get());
         add(ArcaneBlocks.FRENZY_FIRE_BLOCK.get(), noDrop());
+        add(ArcaneBlocks.FROSTBITTEN_LEAVES.get(), createShearsOnlyDrop(ArcaneBlocks.FROSTBITTEN_LEAVES.get()));
     }
     
     @Override

@@ -5,6 +5,7 @@ import com.estie.arcanecontent.common.block.BlockOfSilly;
 import com.estie.arcanecontent.common.block.FrenzyFireBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,4 +19,7 @@ public class ArcaneBlocks {
     
     public static final RegistryObject<FrenzyFireBlock> FRENZY_FIRE_BLOCK = BLOCKS.register("frenzy_fire_block",
             () -> new FrenzyFireBlock(BlockBehaviour.Properties.copy(Blocks.FIRE), 4));
+    
+    public static final RegistryObject<LeavesBlock> FROSTBITTEN_LEAVES = BLOCKS.register("frostbitten_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_LEAVES)));
 }
