@@ -1,6 +1,7 @@
 package com.estie.arcanecontent.datagen.providers;
 
 import com.estie.arcanecontent.ArcaneContent;
+import com.estie.arcanecontent.init.ArcaneBiomes;
 import com.estie.arcanecontent.init.ArcaneDamageSources;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
@@ -13,7 +14,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class ArcaneRegistryProvider extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-            .add(Registries.DAMAGE_TYPE, ArcaneDamageSources::bootstrap);
+            .add(Registries.DAMAGE_TYPE, ArcaneDamageSources::bootstrap)
+            .add(Registries.BIOME, ArcaneBiomes::bootstrap);
     
     public ArcaneRegistryProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(ArcaneContent.MODID, "minecraft"));

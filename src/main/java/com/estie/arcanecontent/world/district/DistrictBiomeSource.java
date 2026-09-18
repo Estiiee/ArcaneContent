@@ -2,10 +2,12 @@ package com.estie.arcanecontent.world.district;
 
 import com.estie.arcanecontent.ArcaneContent;
 import com.estie.arcanecontent.Config;
+import com.estie.arcanecontent.init.ArcaneBiomes;
 import com.livajq.arcanetweaks.UndergroundBiomeConfigLoader;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -34,16 +36,28 @@ public class DistrictBiomeSource extends BiomeSource {
     private final Map<TagKey<Biome>, List<Holder<Biome>>> tagCache;
     private final Map<Long, Holder<Biome>> remapCache;
     private final Map<ResourceKey<Biome>, Holder<Biome>> biomeHolders;
+    private final Registry<Biome> biomeRegistry;
     
     private static final int SURFACE_QUART_Y = 75;
     
     public DistrictBiomeSource(BiomeSource delegate, long seed) {
+        this(delegate, seed, null);
+    }
+    
+    public DistrictBiomeSource(BiomeSource delegate, long seed, Registry<Biome> biomeRegistry) {
         this.delegate = delegate;
         this.seed = seed;
+        this.biomeRegistry = biomeRegistry;
         
         this.biomeHolders = delegate.possibleBiomes().stream()
                 .filter(h -> h.unwrapKey().isPresent())
                 .collect(Collectors.toMap(h -> h.unwrapKey().get(), h -> h));
+        
+        for (ResourceKey<Biome> key : ArcaneBiomes.BIOMES) {
+            biomeRegistry.getHolder(key).ifPresent(
+                    holder -> this.biomeHolders.put(key, holder)
+            );
+        }
         
         Map<TagKey<Biome>, List<Holder<Biome>>> tagTmp = new HashMap<>();
         List<Holder<Biome>> possible = delegate.possibleBiomes().stream().toList();
@@ -80,9 +94,11 @@ public class DistrictBiomeSource extends BiomeSource {
     
     @Override
     protected Stream<Holder<Biome>> collectPossibleBiomes() {
-        return delegate.possibleBiomes().stream();
+        return Stream.concat(
+                delegate.possibleBiomes().stream(),
+                biomeHolders.values().stream()
+        ).distinct();
     }
-    
     
     @Override
     public Holder<Biome> getNoiseBiome(int quartX, int quartY, int quartZ, Climate.Sampler sampler) {
@@ -91,8 +107,12 @@ public class DistrictBiomeSource extends BiomeSource {
         Holder<Biome> original = delegate.getNoiseBiome(quartX, quartY, quartZ, sampler);
         if (original == null) return fallbackBiome();
         
-        Holder <Biome> surfaceBiome = delegate.getNoiseBiome(quartX, SURFACE_QUART_Y, quartZ, sampler);
-        Holder <Biome> currentBiome = delegate.getNoiseBiome(quartX, quartY, quartZ, sampler);
+        original = applyClimateReplacement(original, quartX, quartY, quartZ, sampler);
+        
+        Holder<Biome> surfaceBiome = applyClimateReplacement(
+                        delegate.getNoiseBiome(quartX, SURFACE_QUART_Y, quartZ, sampler), quartX, SURFACE_QUART_Y, quartZ, sampler);
+        
+        Holder<Biome> currentBiome = original;
         
         if (!Objects.equals(
                 surfaceBiome.unwrapKey().orElse(null),
@@ -175,5 +195,26 @@ public class DistrictBiomeSource extends BiomeSource {
         RandomSource rand = RandomSource.create(seed ^ biomeSeed);
         
         return allowed.get(rand.nextInt(allowed.size()));
+    }
+    
+    private Holder<Biome> applyClimateReplacement(Holder<Biome> original, int quartX, int quartY, int quartZ, Climate.Sampler sampler) {
+        ResourceKey<Biome> key = original.unwrapKey().orElse(null);
+        if (key == null) return original;
+        
+        Climate.TargetPoint point =
+                sampler.sample(quartX, quartY, quartZ);
+        
+        ResourceKey<Biome> replacement =
+                ClimateReplacementManager.replace(
+                        key,
+                        point,
+                        RandomSource.create(
+                                Mth.getSeed(quartX, quartY, quartZ) ^ seed
+                        )
+                );
+        
+        if (replacement.equals(key)) return original;
+        
+        return biomeHolders.getOrDefault(replacement, original);
     }
 }
