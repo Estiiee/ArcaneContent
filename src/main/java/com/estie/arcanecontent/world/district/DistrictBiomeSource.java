@@ -7,7 +7,9 @@ import com.livajq.arcanetweaks.UndergroundBiomeConfigLoader;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -26,7 +28,8 @@ public class DistrictBiomeSource extends BiomeSource {
     public static final Codec<DistrictBiomeSource> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     BiomeSource.CODEC.fieldOf("delegate").forGetter(src -> src.delegate),
-                    Codec.LONG.fieldOf("seed").forGetter(src -> src.seed)
+                    Codec.LONG.fieldOf("seed").forGetter(src -> src.seed),
+                    RegistryOps.retrieveGetter(Registries.BIOME)
             ).apply(instance, DistrictBiomeSource::new)
     );
     
@@ -36,7 +39,7 @@ public class DistrictBiomeSource extends BiomeSource {
     private final Map<TagKey<Biome>, List<Holder<Biome>>> tagCache;
     private final Map<Long, Holder<Biome>> remapCache;
     private final Map<ResourceKey<Biome>, Holder<Biome>> biomeHolders;
-    private final Registry<Biome> biomeRegistry;
+    private final HolderGetter<Biome> biomeGetter;
     
     private static final int SURFACE_QUART_Y = 75;
     
@@ -44,19 +47,17 @@ public class DistrictBiomeSource extends BiomeSource {
         this(delegate, seed, null);
     }
     
-    public DistrictBiomeSource(BiomeSource delegate, long seed, Registry<Biome> biomeRegistry) {
+    public DistrictBiomeSource(BiomeSource delegate, long seed, HolderGetter<Biome> biomeGetter) {
         this.delegate = delegate;
         this.seed = seed;
-        this.biomeRegistry = biomeRegistry;
+        this.biomeGetter = biomeGetter;
         
         this.biomeHolders = delegate.possibleBiomes().stream()
                 .filter(h -> h.unwrapKey().isPresent())
                 .collect(Collectors.toMap(h -> h.unwrapKey().get(), h -> h));
         
         for (ResourceKey<Biome> key : ArcaneBiomes.BIOMES) {
-            biomeRegistry.getHolder(key).ifPresent(
-                    holder -> this.biomeHolders.put(key, holder)
-            );
+            biomeGetter.get(key).ifPresent(holder -> this.biomeHolders.put(key, holder));
         }
         
         Map<TagKey<Biome>, List<Holder<Biome>>> tagTmp = new HashMap<>();
