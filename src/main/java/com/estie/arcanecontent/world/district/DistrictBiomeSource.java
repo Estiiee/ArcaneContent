@@ -218,4 +218,8 @@ public class DistrictBiomeSource extends BiomeSource {
         
         return biomeHolders.getOrDefault(replacement, original);
     }
+    
+    public BiomeSource getDelegate() {
+        return delegate;
+    }
 }

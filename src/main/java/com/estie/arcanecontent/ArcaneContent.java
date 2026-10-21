@@ -48,9 +48,13 @@ public class ArcaneContent {
         modEventBus.addListener(ArcaneEntities::onRegisterAttributes);
         ArcaneSounds.SOUNDS.register(modEventBus);
         ArcaneBlocks.BLOCKS.register(modEventBus);
+        ArcaneBlocks.BLOCKS_RU.register(modEventBus);
         ArcaneItems.ITEMS.register(modEventBus);
+        ArcaneItems.ITEMS_RU.register(modEventBus);
         ArcaneAttributes.ATTRIBUTES.register(modEventBus);
         ArcaneCreativeTabs.TABS.register(modEventBus);
+        ArcaneFeatures.FEATURES.register(modEventBus);
+        ArcaneFeatures.FEATURES_RU.register(modEventBus);
         
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC, "arcanecontent.toml");
     }
@@ -97,6 +101,9 @@ public class ArcaneContent {
             if (event.getTabKey() != ArcaneCreativeTabs.ARCANE.getKey()) return;
             
             for (RegistryObject<Item> item : ArcaneItems.ITEMS.getEntries()) {
+                event.accept(item.get());
+            }
+            for (RegistryObject<Item> item : ArcaneItems.ITEMS_RU.getEntries()) {
                 event.accept(item.get());
             }
         }

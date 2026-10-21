@@ -13,9 +13,11 @@ public final class ArcaneBiomes {
     private ArcaneBiomes() {}
     
     public static final ResourceKey<Biome> HOWLING_GLACIERS = key("howling_glaciers");
+    public static final ResourceKey<Biome> ANCIENT_DELTA = keyRU("ancient_delta");
     
     public static final Set<ResourceKey<Biome>> BIOMES = Set.of(
-            HOWLING_GLACIERS
+            HOWLING_GLACIERS,
+            ANCIENT_DELTA
     );
     
     //who decided to make adding non-fully-custom biomes so cancer
@@ -32,5 +34,8 @@ public final class ArcaneBiomes {
     
     private static ResourceKey<Biome> key(String name) {
         return ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(ArcaneContent.MODID, name));
+    }
+    private static ResourceKey<Biome> keyRU(String name) {
+        return ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath("regions_unexplored", name));
     }
 }

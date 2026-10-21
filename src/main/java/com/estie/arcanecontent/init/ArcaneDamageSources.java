@@ -17,6 +17,7 @@ public final class ArcaneDamageSources {
     
     public static final ResourceKey<DamageType> VAPORIZED = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(ArcaneContent.MODID, "vaporized"));
     public static final ResourceKey<DamageType> IN_FRENZY_FIRE = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(ArcaneContent.MODID, "in_frenzy_fire"));
+    public static ResourceKey<DamageType> DUSK_TRAP = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("regions_unexplored", "dusk_trap"));
     
     public static DamageSource vaporized(Level level) {
         Holder<DamageType> type = level.registryAccess()
@@ -56,8 +57,17 @@ public final class ArcaneDamageSources {
         };
     }
     
+    public static DamageSource duskTrap(Level level) {
+        Holder<DamageType> type = level.registryAccess()
+                .registryOrThrow(Registries.DAMAGE_TYPE)
+                .getHolderOrThrow(IN_FRENZY_FIRE);
+        
+        return new DamageSource(type);
+    }
+    
     public static void bootstrap(BootstapContext<DamageType> context) {
         context.register(IN_FRENZY_FIRE, new DamageType("in_frenzy_fire", DamageScaling.NEVER, 0.1f));
         context.register(VAPORIZED, new DamageType("vaporized", DamageScaling.NEVER, 0.1f));
+        context.register(DUSK_TRAP, new DamageType("dusk_trap", 1.0F));
     }
 }
