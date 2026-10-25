@@ -67,6 +67,9 @@ public class ArcaneBlocks {
     public static RegistryObject<Block> DROPLEAF = BLOCKS_RU.register("dropleaf",
             () -> new DropleafBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel((s) -> 14)));
     
+    public static RegistryObject<Block> BRIMSPROUT = BLOCKS_RU.register("brimsprout",
+            () -> new BrimPlantBlock(BlockBehaviour.Properties.of().replaceable().noCollission().instabreak().sound(SoundType.SCULK).offsetType(BlockBehaviour.OffsetType.XYZ).lightLevel(s -> 5).emissiveRendering((s, l, p) -> true)));
+   
     public static final WoodSet BLACKWOOD = new WoodSet("blackwood", SoundType.NETHER_WOOD,
             MapColor.TERRACOTTA_BLACK, MapColor.TERRACOTTA_BROWN, false, UnaryOperator.identity());
     public static final WoodSet BRIMWOOD = new WoodSet("brimwood", SoundType.NETHER_WOOD,
@@ -86,7 +89,12 @@ public class ArcaneBlocks {
             
     
     private static RegistryObject<Block> leaves(String id, MapColor c) {
-        return reg(id, () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).mapColor(c)));
+        return reg(id, () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).mapColor(c)) {
+            @Override
+            public boolean isRandomlyTicking(BlockState state) {
+                return false;
+            }
+        });
     }
     
     private static RegistryObject<Block> shrub(String id) {
