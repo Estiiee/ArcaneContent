@@ -4,4 +4,5 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 public class RuBlockStateProperties {
     public static final BooleanProperty CLOSED = BooleanProperty.create("closed");
+    public static final BooleanProperty TRANSITION_BLOCK = BooleanProperty.create("transition_block");
 }

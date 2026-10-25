@@ -42,7 +42,8 @@ public class ArcaneItems {
             "corpse_flower", () -> new BlockItem(ArcaneBlocks.CORPSE_FLOWER.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> DUSKTRAP = ITEMS_RU.register(
             "dusktrap", () -> new BlockItem(ArcaneBlocks.DUSKTRAP.get(), new Item.Properties()));
-    
+    public static final RegistryObject<BlockItem> DROPLEAF = ITEMS_RU.register(
+            "dropleaf", () -> new BlockItem(ArcaneBlocks.DROPLEAF.get(), new Item.Properties()));
     
     static {
         for (BloodedDragonType type : BloodedDragonType.values()) {

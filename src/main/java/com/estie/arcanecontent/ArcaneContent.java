@@ -12,6 +12,8 @@ import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
@@ -30,6 +32,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Mod(ArcaneContent.MODID)
 public class ArcaneContent {
@@ -65,8 +71,17 @@ public class ArcaneContent {
     
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-
+            addValid(BlockEntityType.SIGN, ArcaneBlocks.BLACKWOOD.sign.get(), ArcaneBlocks.BLACKWOOD.wallSign.get(),
+                    ArcaneBlocks.BRIMWOOD.sign.get(), ArcaneBlocks.BRIMWOOD.wallSign.get());
+            addValid(BlockEntityType.HANGING_SIGN, ArcaneBlocks.BLACKWOOD.hangingSign.get(), ArcaneBlocks.BLACKWOOD.wallHangingSign.get(),
+                    ArcaneBlocks.BRIMWOOD.hangingSign.get(), ArcaneBlocks.BRIMWOOD.wallHangingSign.get());
         });
+    }
+    
+    private static void addValid(BlockEntityType<?> type, Block... blocks) {
+        Set<Block> set = new HashSet<>(type.validBlocks);
+        set.addAll(Arrays.asList(blocks));
+        type.validBlocks = set;
     }
     
     private void reloadListener(AddReloadListenerEvent event) {
