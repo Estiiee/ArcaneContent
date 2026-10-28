@@ -1,5 +1,7 @@
 package com.estie.arcanecontent;
 
+import com.Polarice3.Goety.client.render.GraveGolemRenderer;
+import com.Polarice3.Goety.client.render.GraveMonstrosityRenderer;
 import com.estie.arcanecontent.client.render.entity.layer.LayerBloodedArmorOverlay;
 import com.estie.arcanecontent.init.*;
 import com.mojang.logging.LogUtils;
@@ -135,6 +137,12 @@ public class ArcaneContent {
                     renderer.addLayer(new LayerBloodedArmorOverlay<>(renderer));
                 }
             }
+        }
+        
+        @SubscribeEvent
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            if (ArcaneEntities.HOSTILE_GRAVE_GOLEM != null) event.registerEntityRenderer(ArcaneEntities.HOSTILE_GRAVE_GOLEM.get(), GraveGolemRenderer::new);
+            if (ArcaneEntities.HOSTILE_GRAVE_MONSTROSITY != null) event.registerEntityRenderer(ArcaneEntities.HOSTILE_GRAVE_MONSTROSITY.get(), GraveMonstrosityRenderer::new);
         }
         
         @SuppressWarnings("unchecked")
