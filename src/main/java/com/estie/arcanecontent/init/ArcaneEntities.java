@@ -29,6 +29,6 @@ public class ArcaneEntities {
     
     public static void onRegisterAttributes(EntityAttributeCreationEvent event) {
         if (HOSTILE_GRAVE_GOLEM != null) event.put(HOSTILE_GRAVE_GOLEM.get(), HostileGraveGolem.createAttributes().build());
-        if (HOSTILE_GRAVE_MONSTROSITY != null) event.put(HOSTILE_GRAVE_MONSTROSITY.get(), HostileGraveGolem.createAttributes().build());
+        if (HOSTILE_GRAVE_MONSTROSITY != null) event.put(HOSTILE_GRAVE_MONSTROSITY.get(), HostileGraveMonstrosity.createAttributes().build());
     }
 }

@@ -48,12 +48,13 @@ public class ArcaneContent {
     public ArcaneContent(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+      
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::onRegister);
+        modEventBus.addListener(ArcaneEntities::onRegisterAttributes);
         forgeEventBus.addListener(this::reloadListener);
         
         ArcaneEntities.ENTITY_TYPES.register(modEventBus);
-        modEventBus.addListener(ArcaneEntities::onRegisterAttributes);
         ArcaneSounds.SOUNDS.register(modEventBus);
         ArcaneBlocks.BLOCKS.register(modEventBus);
         ArcaneBlocks.BLOCKS_RU.register(modEventBus);
@@ -118,10 +119,10 @@ public class ArcaneContent {
             if (event.getTabKey() != ArcaneCreativeTabs.ARCANE.getKey()) return;
             
             for (RegistryObject<Item> item : ArcaneItems.ITEMS.getEntries()) {
-                event.accept(item.get());
+                if (item != null) event.accept(item.get());
             }
             for (RegistryObject<Item> item : ArcaneItems.ITEMS_RU.getEntries()) {
-                event.accept(item.get());
+                if (item != null) event.accept(item.get());
             }
         }
         

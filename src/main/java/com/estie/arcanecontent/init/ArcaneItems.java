@@ -7,6 +7,8 @@ import com.estie.arcanecontent.common.item.blooded.ItemBloodedArmor;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.common.ForgeSpawnEggItem;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,8 +28,15 @@ public class ArcaneItems {
             RegistryObject<Item> leggings, RegistryObject<Item> boots) {
     }
     
-    public static final RegistryObject<BlockItemOfSilly> BLOCK_OF_SILLY = ITEMS.register("block_of_silly", () -> new BlockItemOfSilly(ArcaneBlocks.BLOCK_OF_SILLY.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> FROSTBITTEN_LEAVES = ITEMS.register("frostbitten_leaves", () -> new BlockItem(ArcaneBlocks.FROSTBITTEN_LEAVES.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItemOfSilly> BLOCK_OF_SILLY = ITEMS.register("block_of_silly",
+            () -> new BlockItemOfSilly(ArcaneBlocks.BLOCK_OF_SILLY.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> FROSTBITTEN_LEAVES = ITEMS.register("frostbitten_leaves",
+            () -> new BlockItem(ArcaneBlocks.FROSTBITTEN_LEAVES.get(), new Item.Properties()));
+    
+    public static final RegistryObject<ForgeSpawnEggItem> HOSTILE_GRAVE_GOLEM_EGG = ModList.get().isLoaded("goety") ? ITEMS.register("hostile_grave_golem_egg",
+            () -> new ForgeSpawnEggItem(ArcaneEntities.HOSTILE_GRAVE_GOLEM, 0x2B2429, 0x2E9C9A, new Item.Properties())) : null;
+    public static final RegistryObject<ForgeSpawnEggItem> HOSTILE_GRAVE_MONSTROSITY_EGG = ModList.get().isLoaded("goety") ? ITEMS.register("hostile_grave_monstrosity_egg",
+            () -> new ForgeSpawnEggItem(ArcaneEntities.HOSTILE_GRAVE_MONSTROSITY, 0x2B2429, 0x8FE01E, new Item.Properties())) : null;
     
     //Regions Unexplored
     public static final RegistryObject<BlockItem> ARGILLITE_GRASS_BLOCK = ITEMS_RU.register(

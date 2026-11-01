@@ -18,6 +18,8 @@ public class ArcaneItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         withExistingParent("block_of_silly", modLoc("block/block_of_silly"));
         withExistingParent("frostbitten_leaves", modLoc("block/frostbitten_leaves"));
+        if (ArcaneItems.HOSTILE_GRAVE_GOLEM_EGG != null) withExistingParent("hostile_grave_golem_egg", mcLoc("item/template_spawn_egg"));
+        if (ArcaneItems.HOSTILE_GRAVE_MONSTROSITY_EGG != null) withExistingParent("hostile_grave_monstrosity_egg", mcLoc("item/template_spawn_egg"));
         
         for (ArcaneItems.BloodedArmorSet set : ArcaneItems.BLOODED_ARMOR_SETS.values()) {
             registerBloodedPiece(set.helmet().get());
